@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Elliptic Curve Cryptography</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/css/noscript.css" /></noscript>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({            
+				tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
+			});
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>	
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<h1>Use of Elliptic Curves<br />
+						in Cryptography</h1>
+						<p>Although RSA is sesure asymmetric key cryptosystems, their security comes with a price, their large keys.<br />
+						Researchers have looked for alternatives tht give the same level of security with smaller key sizes.<br />
+						One of these promising alternatives is the elliptic curve cryptosystem(ECC).</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+						<a href="/" class="logo">Elliptic Curve Cryptography</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="/">Basics</a></li>
+							<li><a href="/types">Types</a></li>
+							<li><a href="/advantages">Advantages</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Featured Post -->
+							<article class="post featured">
+								<header class="major">
+									<span class="date">Introduction to Elliptic Curves</span>
+									<p>In mathematics elliptic curves are plane algebraic curves, of all points {x, y}, 
+										<br>described by the equation of the general cubic curve of the form:</p>
+									<p>$ax^{3}+bx^{2}y+cxy^{2}+dy^{}+ex^{2}+fxy+gy^{2}+hx+iy+j=0$</p>
+									<br>
+									<p>The general equation for an elliptic curve is</p>
+									<p>$y^{2}+b_1xy+b_2y=x^{3}+a_1x^{2}+a_2x+a_3$.</p>
+									<br>
+									<p>Elliptic curves over real numbers use a special class of elliptic curves of the form:</p>
+									<p>$y^{2}=x^{3}+ax+b$ &nbsp; $(4a^{3}+27b^{2}≠0)$</p>
+									<p>Any elliptic curve can be written in this simplified form said to Weierstras normal form and it is commonly used in cryptograghy.
+									<br>For example, the NIST curve secp256k1 (used in Bitcoin) is based on an elliptic curve in the form:</p>
+									<p>$y^{2}=x^{3}+7$</p>
+									<p>This is a visualization of the above elliptic curve:</p>
+								</header>
+								<a href="#" class="image main"><img src="static/images/pic01.jpg" alt="" /></a>
+							</article>
+						
+						<!-- Featured Post -->
+						<article class="post featured">
+							<header class="major">
+								<span class="date">Reason for usage of elliptic curves in cryptography</span>
+							</header>
+							<p>The use of elliptic curve in cryptography lead to smaller keys with same level of security in cryptosystem. 
+							Elliptic Curve Cryptography (ECC) is considered a natural modern successor of the RSA cryptosystem, 
+							because ECC uses smaller keys and signatures than RSA for the same level of security and provides very fast key generation, 
+							fast key agreement and fast signatures.
+							</p>
+						</article>
+
+						<!-- Featured Post -->
+						<article class="post featured">
+							<header class="major">
+								<span class="date">Elliptic Curve Cryptography</span>
+							</header>
+							<p>Elliptic curve cryptograghy (ECC) is an approach to public-key cryptography based on the algebraic structure of elliptic curves over finite fields.
+							ECC allows smaller keys compared to non-EC cryptography to provide equivalent security.
+							Elliptic curves are applicable for key agreement, digital signatures, pseudo-random generators and other tasks.
+							Indirectly, they can be used for encryption by combining the key agreement with a symmetric encryption scheme.
+							</p>
+						</article>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/js/jquery.min.js"></script>
+			<script src="static/js/jquery.scrollex.min.js"></script>
+			<script src="static/js/jquery.scrolly.min.js"></script>
+			<script src="static/js/browser.min.js"></script>
+			<script src="static/js/breakpoints.min.js"></script>
+			<script src="static/js/util.js"></script>
+			<script src="static/js/main.js"></script>
+
+	</body>
+</html>

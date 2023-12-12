@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Elliptic Curve Cryptography</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/css/main.css" />
+		<noscript><link rel="stylesheet" href="static/css/noscript.css" /></noscript>
+		<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({            
+				tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}            
+			});
+		</script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="/" class="logo">Elliptic Curve Cryptography</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="/">Basics</a></li>
+							<li><a href="/types">Types</a></li>
+							<li class="active"><a href="/advantages">Advantages</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">ECC Simulating ElGamal</span>
+								</header>
+								<div class="image main"><img src="static/images/figure01.jpg" alt="" /></div>
+								<p>[Generating Public and Private Keys]</p>							
+								<p>1. Choose $E_p(a, b)$ over $GF(p)$.
+								<br>2. Choose a point $e_1=(x_1,y_1)$ in $E_p(a, b)$.
+								<br>3. Choose an integer $d$.
+								<br>4. Calculate $e_2=(x_2,y_2)=d*e_1$
+								<br>5. Announce $p, a, b, e_1$ and $e_2$ as public key, keep $d$ as private key.</p>
+								<br>
+								<p>[Encryption]</p>							
+								<p>1. Select $P, a$ point in $E_p(a, b)$, as plaintext.
+								<br>2. Choose a random positive integer, $r$.
+								<br>3. Calculate a pair of points.</p>
+								<p>$C_1=r*e_1$, $C_2=P+r*e_2$</p>
+								<br>
+								<p>[Decryption]</p>							
+								<p>$P=C_2-(d*C_1)$
+								<br>Proof: $C_2-d*C_1=(P+r*e_2)-d*(r*e_1)=P+r*e_2-r*d*e_1=P+r*e_2-r*e_2=P+O=P$</p>
+							</section>
+						
+						<!-- Post -->	
+							<section class="post">
+								<header class="major">
+									<span class="date">Practical Examples</span>
+								</header>
+								<p>Here is a very trivial example of encipherment using an elliptic curve over $GF(p)$.</p>
+								<br>
+								<p>[Key Generation]</p>								
+								<p>1. Bob selects $E_67(2, 3)$ as the elliptic curve over $GF(67)$. $p=67, a=2, b=3$.
+								<br>2. Bob selects $e_1=(2, 22)$ and $d=4$.
+								<br>3. Bob calculates $e_2=(13, 45)$, where $e_2=d*e_r$
+								<br>4. Bob publicly announces the tuple($p, a, b, e_1$, $e_2$) and keeps d as his private key.</p>
+								<br>
+								<p>[Encryption]</p>
+								<p>1. Alice wants to send the plaintext $P=(24, 26)$ to Bob. She selects $r=2$.
+								<br>2. Alice finds the point $C_1=(35, 1)$, where $C_1=r*e_1$, and the point $C_2=(21, 44)$, where $C_2=P+r*e_2$
+								<br>3. Alice sends $C1$ and $C2$ to Bob.</p>
+								<p>$C_1=r*e_1$, $C_2=P+r*e_2$</p>
+								<br>
+								<p>[Decryption]</p>
+								<p>1. Bob receives $C_1$ and $C_2$. He uses $d*C_1$ to get $(23, 25)$.
+								<br>2. Bob inverts the point $(23, 25)$ to get $(23,42)$.
+								<br>3. Bob adds $(23, 42)$ to $C_2=(21,44)$ to get the original plaintext $P=(24,26)$.</p>
+								<p>$P=C_2-(d*C_1)$</p>
+							</section>
+
+						<!-- Post -->	
+							<section class="post">
+								<header class="major">
+									<span class="date">Practical Examples</span>
+								</header>
+								<p>Here is a very trivial example of encipherment using an elliptic curve over $GF(p)$.</p>
+								<br>
+								<p>[Key Generation]</p>								
+								<p>1. Bob selects $E_67(2, 3)$ as the elliptic curve over $GF(67)$. $p=67, a=2, b=3$.
+								<br>2. Bob selects $e_1=(2, 22)$ and $d=4$.
+								<br>3. Bob calculates $e_2=(13, 45)$, where $e_2=d*e_r$
+								<br>4. Bob publicly announces the tuple($p, a, b, e_1$, $e_2$) and keeps d as his private key.</p>
+								<br>
+								<p>[Encryption]</p>
+								<p>1. Alice wants to send the plaintext $P=(24, 26)$ to Bob. She selects $r=2$.
+								<br>2. Alice finds the point $C_1=(35, 1)$, where $C_1=r*e_1$, and the point $C_2=(21, 44)$, where $C_2=P+r*e_2$
+								<br>3. Alice sends $C1$ and $C2$ to Bob.</p>
+								<p>$C_1=r*e_1$, $C_2=P+r*e_2$</p>
+								<br>
+								<p>[Decryption]</p>
+								<p>1. Bob receives $C_1$ and $C_2$. He uses $d*C_1$ to get $(23, 25)$.
+								<br>2. Bob inverts the point $(23, 25)$ to get $(23,42)$.
+								<br>3. Bob adds $(23, 42)$ to $C_2=(21,44)$ to get the original plaintext $P=(24,26)$.</p>
+								<p>$P=C_2-(d*C_1)$</p>
+							</section>
+
+						<!-- Post -->	
+							<section class="post">
+								<header class="major">
+									<span class="date">Code Examples</span>
+								</header>
+								<p>Here is a very trivial example of encipherment using an elliptic curve over $GF(p)$.</p>
+								<br>
+								<p>[Key Generation]</p>								
+								<p>1. Bob selects $E_67(2, 3)$ as the elliptic curve over $GF(67)$. $p=67, a=2, b=3$.
+								<br>2. Bob selects $e_1=(2, 22)$ and $d=4$.
+								<br>3. Bob calculates $e_2=(13, 45)$, where $e_2=d*e_r$
+								<br>4. Bob publicly announces the tuple($p, a, b, e_1$, $e_2$) and keeps d as his private key.</p>
+								<br>
+								<p>[Encryption]</p>
+								<p>1. Alice wants to send the plaintext $P=(24, 26)$ to Bob. She selects $r=2$.
+								<br>2. Alice finds the point $C_1=(35, 1)$, where $C_1=r*e_1$, and the point $C_2=(21, 44)$, where $C_2=P+r*e_2$
+								<br>3. Alice sends $C1$ and $C2$ to Bob.</p>
+								<p>$C_1=r*e_1$, $C_2=P+r*e_2$</p>
+								<br>
+								<p>[Decryption]</p>
+								<p>1. Bob receives $C_1$ and $C_2$. He uses $d*C_1$ to get $(23, 25)$.
+								<br>2. Bob inverts the point $(23, 25)$ to get $(23,42)$.
+								<br>3. Bob adds $(23, 42)$ to $C_2=(21,44)$ to get the original plaintext $P=(24,26)$.</p>
+								<p>$P=C_2-(d*C_1)$</p>
+							</section>
+						
+						<!-- Post -->	
+							<section class="post">
+								<header class="major">
+									<span class="date">Code Examples</span>
+								</header>
+								<video muted autoplay loop><source src="static/images/ecc.mp4" type="video/mp4"></video>
+								<p>a. ECC code example</p>
+								<video muted autoplay loop><source src="static/images/rsa.mp4" type="video/mp4"></video>
+								<p>b. RSA code example</p>
+								<video muted autoplay loop><source src="static/images/comparison.mp4" type="video/mp4"></video>
+								<p>c. Comparison</p>
+								<p>ECC provides the same high level of security as RSA with faster processing speeds due to their smaller key sizes.</p>
+							</section>
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<span class="date">Conclusion</span>
+								</header>
+								<p>ECC requires less processing power (CPU) and memory, resulting in significantly faster response
+									times and throughput on Web servers when it is in use.
+									Critical benefit of using ECC is Perfect Forward Secrecy (PFS). While PFS is not a property of ECC,
+									the cipher suites supported by modern Web servers and browsers that implement PFS also
+									implement ECC. Web servers that prefer Ephemeral ECDH (ECDHE) using cipher suites such as
+									“TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA” gain the benefits of both ECC and PFS.</p>
+								<div class="image main"><img src="static/images/table02.png" alt="" /></div>
+								<p>As the figure shows, with ECC we can get equivalent cryptographic strength with significantly smaller
+									key sizes - about an order of magnitude smaller. For example, to achieve the equivalent
+									cryptographic strength of encrypting using a 112 bit symmetric key would require an RSA 2048
+									bit key, but only an ECC 224 bit key.
+									The shorter key lengths mean devices require less processing power to encrypt and decrypt data,
+									making ECC a good fit for mobile devices, Internet of Things, and other use cases with more
+									limited computing power.</p>
+							</section>
+					</div>
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/js/jquery.min.js"></script>
+			<script src="static/js/jquery.scrollex.min.js"></script>
+			<script src="static/js/jquery.scrolly.min.js"></script>
+			<script src="static/js/browser.min.js"></script>
+			<script src="static/js/breakpoints.min.js"></script>
+			<script src="static/js/util.js"></script>
+			<script src="static/js/main.js"></script>
+
+	</body>
+</html>
